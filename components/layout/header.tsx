@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-white">
-        <div className="page-container flex h-24 items-center justify-between gap-12.5">
+        <div className="page-container h-header flex items-center justify-between gap-12.5">
           <Logo />
 
           <div className="hidden w-[62%] justify-between gap-12.5 lg:flex">
@@ -76,7 +76,7 @@ export default function Header() {
       {/* Mobile Menu */}
       <Sheet open={open} onOpenChange={setOpen}>
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50 lg:hidden">
-          <div className="page-container flex h-24 items-center justify-end">
+          <div className="page-container h-header flex items-center justify-end">
             <SheetTrigger
               render={
                 <HamburgerIcon
@@ -99,19 +99,19 @@ export default function Header() {
           <nav aria-label="secondary">
             <ul className="flex gap-10.25">
               <li>
-                <SheetClose render={<Link href="#" />}>
+                <SheetClose nativeButton={false} render={<Link href="#" />}>
                   <User className="h-5 w-5" />
                 </SheetClose>
               </li>
 
               <li>
-                <SheetClose render={<Link href="/wishlist" />}>
+                <SheetClose nativeButton={false} render={<Link href="/wishlist" />}>
                   <Heart className="h-5 w-5" />
                 </SheetClose>
               </li>
 
               <li>
-                <SheetClose render={<Link href="/cart" />}>
+                <SheetClose nativeButton={false} render={<Link href="/cart" />}>
                   <ShoppingCart className="h-5 w-5" />
                 </SheetClose>
               </li>
@@ -123,6 +123,7 @@ export default function Header() {
               {navItems.map((item) => (
                 <li key={item.href}>
                   <SheetClose
+                    nativeButton={false}
                     render={
                       <Link
                         href={item.href}

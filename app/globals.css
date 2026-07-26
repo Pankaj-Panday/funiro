@@ -45,6 +45,8 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
+  --spacing-header: var(--header-height);
+
   /* custom colors */
   --color-primary: var(--primary);
   --color-primary-active: var(--primary-active);
@@ -91,6 +93,8 @@
 
   --light: #9f9f9f;
   --dark: #000000;
+
+  --header-height: 100px;
 }
 
 .dark {
