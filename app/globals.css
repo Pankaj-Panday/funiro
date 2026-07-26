@@ -44,6 +44,13 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* custom colors */
+  --color-primary: var(--primary);
+  --color-primary-active: var(--primary-active);
+
+  --color-light: var(--light);
+  --color-dark: var(--dark);
 }
 
 :root {
@@ -53,7 +60,6 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #b98f32;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -79,6 +85,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --primary: #b98f32;
+  --primary-active: #9e792a;
+
+  --light: #9f9f9f;
+  --dark: #000000;
 }
 
 .dark {
@@ -125,4 +137,13 @@
   html {
     @apply font-sans;
   }
+  @media (max-width: 640px) {
+    html {
+      font-size: 13px;
+    }
+  }
+}
+
+@utility page-container {
+  @apply mx-auto w-[92%] max-w-7xl lg:w-[calc(82%+40px)];
 }

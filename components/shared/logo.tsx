@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface LogoProps {
   small?: boolean;
@@ -7,29 +8,17 @@ interface LogoProps {
 }
 
 export default function Logo({ small = false, className }: LogoProps) {
-  const size = small ? 24 : 34;
-
   return (
-    <Link href="/" className={`flex items-center gap-[5px] ${className}`}>
+    <Link href="/" className={cn("flex items-center gap-[5px]", className)}>
       <Image
         src="/assets/logo.svg"
         alt="Funiro"
         width={25}
         height={16}
-        style={{
-          height: size,
-          width: "auto",
-        }}
+        className={cn("w-auto", small ? "h-6" : "h-[34px]")}
       />
 
-      <span
-        className="font-bold text-black"
-        style={{
-          fontSize: size,
-        }}
-      >
-        Funiro
-      </span>
+      <span className={cn("font-bold text-black", small ? "text-2xl" : "text-[34px]")}>Funiro</span>
     </Link>
   );
 }

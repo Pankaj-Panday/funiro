@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { navItems } from "@/constants/header/nav-items";
+import { navItems } from "@/constants/header/header.constants";
 
 import Logo from "../shared/logo";
 import { HamburgerIcon } from "./hamburger-icon";
@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <>
       <header className="sticky top-0 bg-white">
-        <div className="mx-auto flex h-24 w-[calc(82%+40px)] max-w-7xl items-center justify-between gap-12.5 max-[1048px]:w-[92%]">
+        <div className="page-container flex h-24 items-center justify-between gap-12.5">
           <Logo />
 
           <div className="hidden w-[62%] justify-between gap-12.5 min-[841px]:flex">
@@ -38,7 +38,7 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`font-medium capitalize transition-colors ${
-                        pathname === item.href ? "text-primary" : "text-black"
+                        pathname === item.href ? "text-primary" : "text-dark"
                       }`}
                     >
                       {item.label}
@@ -48,7 +48,7 @@ export default function Header() {
               </ul>
             </nav>
 
-            <nav className="w-[15%] max-[934px]:w-auto">
+            <nav className="text-dark w-[15%] max-[934px]:w-auto">
               <ul className="flex justify-between gap-3.75">
                 <li>
                   <Link href="#">
@@ -127,7 +127,7 @@ export default function Header() {
                       <Link
                         href={item.href}
                         className={`font-medium capitalize transition-colors ${
-                          pathname === item.href ? "text-primary" : "text-black"
+                          pathname === item.href ? "text-primary" : "text-dark"
                         }`}
                       />
                     }
