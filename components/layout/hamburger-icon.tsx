@@ -13,10 +13,7 @@ export function HamburgerIcon({ open, className, ...props }: HamburgerIconProps)
     <button
       type="button"
       aria-label="Toggle menu"
-      className={cn(
-        "z-50 flex cursor-pointer flex-col gap-1.25 min-[841px]:hidden",
-        className,
-      )}
+      className={cn("z-50 flex cursor-pointer flex-col gap-1.25 lg:hidden", className)}
       {...props}
     >
       <span

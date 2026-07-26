@@ -30,8 +30,8 @@ export default function Header() {
         <div className="page-container flex h-24 items-center justify-between gap-12.5">
           <Logo />
 
-          <div className="hidden w-[62%] justify-between gap-12.5 min-[841px]:flex">
-            <nav className="w-[48%] max-[934px]:w-auto">
+          <div className="hidden w-[62%] justify-between gap-12.5 lg:flex">
+            <nav className="w-[48%] max-lg:w-auto">
               <ul className="flex justify-between gap-7.5">
                 {navItems.map((item) => (
                   <li key={item.href}>
@@ -48,7 +48,7 @@ export default function Header() {
               </ul>
             </nav>
 
-            <nav className="text-dark w-[15%] max-[934px]:w-auto">
+            <nav className="text-dark w-[15%] max-lg:w-auto">
               <ul className="flex justify-between gap-3.75">
                 <li>
                   <Link href="#">
@@ -75,8 +75,8 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <Sheet open={open} onOpenChange={setOpen}>
-        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 min-[841px]:hidden">
-          <div className="mx-auto flex h-24 w-[calc(82%+40px)] max-w-7xl items-center justify-end max-[1048px]:w-[92%]">
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 lg:hidden">
+          <div className="page-container flex h-24 items-center justify-end">
             <SheetTrigger
               render={
                 <HamburgerIcon
