@@ -1,4 +1,4 @@
-import { GalleryImage } from "@/types/homepage/homepage.types";
+import { ExploreSlide, GalleryImage } from "@/types/homepage/homepage.types";
 
 export const categories = [
   { img: "/assets/homepage/category1.jpg", name: "Dining" },
@@ -60,5 +60,24 @@ export const galleryImages: GalleryImage[] = [
     src: "/assets/homepage/galleryImg9.jpg",
     alt: "Modern kitchen with open shelves and patterned backsplash",
     className: "lg:col-start-6 lg:col-span-2 lg:row-start-5 lg:row-span-2 lg:bg-left",
+  },
+];
+
+export const exploreSlides: ExploreSlide[] = [
+  {
+    id: 1,
+    image: "/assets/homepage/sliderImg1.jpg",
+  },
+  {
+    id: 2,
+    image: "/assets/homepage/sliderImg2.jpg",
+  },
+  {
+    id: 3,
+    image: "/assets/homepage/sliderImg3.jpg",
+  },
+  {
+    id: 4,
+    image: "/assets/homepage/sliderImg4.jpg",
   },
 ];
