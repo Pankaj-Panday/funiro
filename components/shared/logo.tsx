@@ -19,7 +19,7 @@ export default function Logo({ small = false, className }: LogoProps) {
         className={cn("w-auto", small ? "h-6" : "h-[34px]")}
       />
 
-      <span className={cn("font-bold text-dark", small ? "text-2xl" : "text-4xl")}>Funiro</span>
+      <span className={cn("text-dark font-bold", small ? "text-2xl" : "text-4xl")}>Funiro</span>
     </Link>
   );
 }

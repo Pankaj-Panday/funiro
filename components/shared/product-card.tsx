@@ -9,8 +9,7 @@ type Props = {
 };
 
 export default function ProductCard({ product }: Props) {
-  const { id, name, category, price, rating, discountPercent, isNew, thumbnail } =
-    product;
+  const { id, name, category, price, rating, discountPercent, isNew, thumbnail } = product;
 
   const effectivePrice = discountPercent
     ? Math.round((price * (100 - discountPercent)) / 100)
@@ -28,13 +27,13 @@ export default function ProductCard({ product }: Props) {
         />
 
         {discountPercent > 0 && (
-          <span className="absolute top-2 right-2 grid size-12 place-items-center rounded-full bg-badge-sale text-sm font-medium text-primary-foreground">
+          <span className="bg-badge-sale text-primary-foreground absolute top-2 right-2 grid size-12 place-items-center rounded-full text-sm font-medium">
             -{discountPercent}%
           </span>
         )}
 
         {isNew && (
-          <span className="absolute top-16 right-2 grid size-12 place-items-center rounded-full bg-badge-new text-sm font-medium text-primary-foreground">
+          <span className="bg-badge-new text-primary-foreground absolute top-16 right-2 grid size-12 place-items-center rounded-full text-sm font-medium">
             New
           </span>
         )}
@@ -44,26 +43,26 @@ export default function ProductCard({ product }: Props) {
         <h4>
           <Link
             href={`/product/${id}`}
-            className="mb-2 block text-xl leading-[1.2] font-semibold text-ink"
+            className="text-ink mb-2 block text-xl leading-[1.2] font-semibold"
           >
             {name.toUpperCase()}
           </Link>
         </h4>
 
-        <div className="mb-2 flex items-center justify-between text-base font-medium text-muted-foreground">
+        <div className="text-muted-foreground mb-2 flex items-center justify-between text-base font-medium">
           <span>{category}</span>
 
-          <span className="text-sm font-normal text-dark/70">
+          <span className="text-dark/70 text-sm font-normal">
             {rating > 0 ? `(${rating})` : "No rating"}
           </span>
         </div>
 
         <div className="flex items-center justify-between">
-          <FormatPrice price={effectivePrice} className="text-xl font-semibold text-ink" />
+          <FormatPrice price={effectivePrice} className="text-ink text-xl font-semibold" />
 
           {discountPercent > 0 && (
             <s>
-              <FormatPrice price={price} className="text-base font-normal text-light" />
+              <FormatPrice price={price} className="text-light text-base font-normal" />
             </s>
           )}
         </div>

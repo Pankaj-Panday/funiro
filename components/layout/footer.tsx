@@ -12,7 +12,7 @@ export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <footer className="border-dark/20 text-dark border-t bg-background">
+    <footer className="border-dark/20 text-dark bg-background border-t">
       <div className="page-container mx-auto">
         <div className="mt-[50px] flex flex-col gap-[50px] lg:flex-row lg:justify-between">
           {/* Logo */}
@@ -94,7 +94,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="mt-12 border-border" />
+        <hr className="border-border mt-12" />
 
         <p className="my-[35px]">{new Date().getFullYear()} Funiro. All rights reserved.</p>
       </div>

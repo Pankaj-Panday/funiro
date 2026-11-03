@@ -10,7 +10,7 @@ export default function ProductShowCase() {
   return (
     <section className="mt-14">
       <div className="page-container">
-        <h2 className="text-heading text-center font-bold text-ink">Our Products</h2>
+        <h2 className="text-heading text-ink text-center font-bold">Our Products</h2>
 
         <ul className="mx-auto my-8 grid w-[70%] gap-8 sm:w-full sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
           {featuredProducts?.map((product) => (
@@ -22,7 +22,7 @@ export default function ProductShowCase() {
 
         <Link
           href="/shop"
-          className="border-primary text-primary active:bg-primary mx-auto mt-8 block w-[15.3rem] border px-[4.6rem] py-3 text-center font-semibold transition-colors duration-100 active:text-primary-foreground"
+          className="border-primary text-primary active:bg-primary active:text-primary-foreground mx-auto mt-8 block w-[15.3rem] border px-[4.6rem] py-3 text-center font-semibold transition-colors duration-100"
         >
           Show More
         </Link>

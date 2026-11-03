@@ -53,7 +53,7 @@ export default function ExploreCarousel({ slides }: ExploreCarouselProps) {
 
         <button
           onClick={() => api?.scrollNext()}
-          className="absolute top-1/2 right-4 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-background shadow-lg transition hover:scale-105 active:scale-95"
+          className="bg-background absolute top-1/2 right-4 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full shadow-lg transition hover:scale-105 active:scale-95"
         >
           <ChevronRight className="text-primary h-5 w-5" />
         </button>

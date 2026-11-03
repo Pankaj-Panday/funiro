@@ -7,9 +7,9 @@ export default function Categories() {
   return (
     <section className="mt-14">
       <div className="page-container">
-        <h2 className="text-heading text-center font-semibold text-ink">Browse The Range</h2>
+        <h2 className="text-heading text-ink text-center font-semibold">Browse The Range</h2>
 
-        <p className="mt-2 text-center text-xl text-ink-muted">
+        <p className="text-ink-muted mt-2 text-center text-xl">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
 

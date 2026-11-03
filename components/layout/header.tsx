@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-background">
+      <header className="bg-background sticky top-0 z-40">
         <div className="page-container h-header flex items-center justify-between gap-12.5">
           <Logo />
 
