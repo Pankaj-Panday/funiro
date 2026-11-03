@@ -53,6 +53,8 @@
 
   --color-light: var(--light);
   --color-dark: var(--dark);
+  --color-cream: var(--cream);
+  --color-body: var(--body);
 }
 
 :root {
@@ -93,6 +95,8 @@
 
   --light: #9f9f9f;
   --dark: #000000;
+  --cream: #faf3ea;
+  --body: #313131;
 
   --header-height: 100px;
 }
@@ -146,6 +150,10 @@
       font-size: 13px;
     }
   }
+}
+
+@utility content-container {
+  @apply mx-auto w-[92%] max-w-310 lg:w-[82%];
 }
 
 @utility page-container {

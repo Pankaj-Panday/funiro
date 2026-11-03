@@ -16,7 +16,7 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const isDesktop = useMediaQuery("(min-width: 841px)");
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   useEffect(() => {
     if (isDesktop) {
