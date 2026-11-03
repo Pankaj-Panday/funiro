@@ -16,9 +16,7 @@ export default function ContactPage() {
 
       <div className="content-container">
         <div className="mt-14 mb-12 text-center md:mt-24 lg:mb-33">
-          <h2 className="text-dark mb-2 text-4xl leading-normal font-semibold">
-            Get In Touch With Us
-          </h2>
+          <h2 className="text-dark text-heading mb-2 font-semibold">Get In Touch With Us</h2>
           <p className="text-light mx-auto max-w-2xl leading-normal">
             For more information about our products and services, feel free to drop us an email. Our
             staff is always there to help you out. Do not hesitate!
@@ -32,7 +30,7 @@ export default function ContactPage() {
                 <Icon className="text-dark mt-1.5 size-6 shrink-0" />
 
                 <div>
-                  <h3 className="text-dark text-2xl leading-normal font-medium">{title}</h3>
+                  <h3 className="text-dark text-subheading font-medium">{title}</h3>
                   {lines.map((line) => (
                     <p key={line} className="text-dark leading-normal">
                       {line}

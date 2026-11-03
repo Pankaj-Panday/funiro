@@ -31,10 +31,8 @@ export default function AboutPage() {
             />
 
             <div className="md:w-[49%]">
-              <h2 className="text-dark mb-6 text-2xl leading-normal font-bold">{section.title}</h2>
-              <p className="text-body text-[1.2rem] leading-normal md:text-base lg:text-[1.2rem]">
-                {section.body}
-              </p>
+              <h2 className="text-dark text-subheading mb-6 font-bold">{section.title}</h2>
+              <p className="text-body text-lead">{section.body}</p>
             </div>
           </section>
         ))}

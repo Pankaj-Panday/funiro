@@ -20,7 +20,7 @@ export default function PageBanner({ title }: Props) {
       <div className="bg-background/40 absolute inset-0 md:hidden" />
 
       <div className="text-dark relative">
-        <h1 className="mb-0.5 text-5xl leading-normal font-medium">{title}</h1>
+        <h1 className="text-title mb-0.5 font-medium">{title}</h1>
 
         <p className="flex items-center justify-center gap-0.5">
           <Link href="/" className="hover:text-primary font-medium transition-colors">

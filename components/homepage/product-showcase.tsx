@@ -8,7 +8,7 @@ export default function ProductShowCase() {
   return (
     <section className="mt-14">
       <div className="page-container">
-        <h2 className="text-center text-[2.5rem] font-bold text-[#333333]">Our Products</h2>
+        <h2 className="text-heading text-center font-bold text-[#333333]">Our Products</h2>
 
         <ul className="mx-auto my-8 grid w-[70%] gap-8 sm:w-full sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
           {featuredProducts?.map((product) => (

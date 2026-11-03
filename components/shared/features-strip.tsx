@@ -11,12 +11,10 @@ export default function FeaturesStrip() {
             <Image src={feature.icon} alt="" width={60} height={60} className="size-15 shrink-0" />
 
             <div>
-              <h2 className="text-foreground mb-0.5 text-2xl leading-normal font-semibold">
+              <h2 className="text-foreground text-subheading mb-0.5 font-semibold">
                 {feature.name}
               </h2>
-              <p className="text-muted-foreground text-xl leading-normal xl:text-lg 2xl:text-xl">
-                {feature.description}
-              </p>
+              <p className="text-muted-foreground text-lg leading-normal">{feature.description}</p>
             </div>
           </div>
         ))}

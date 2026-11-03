@@ -10,9 +10,7 @@ export default function ExploreSection() {
       <div className="mx-auto flex w-[95%] max-w-[90rem] flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         {/* Left Content */}
         <div className="w-full lg:w-[42%]">
-          <h2 className="text-4xl leading-tight font-bold text-[#3A3A3A]">
-            50+ Beautiful rooms inspiration
-          </h2>
+          <h2 className="text-heading font-bold text-[#3A3A3A]">50+ Beautiful rooms inspiration</h2>
 
           <p className="mt-3 max-w-md leading-7 text-[#616161]">
             Our designer already made a lot of beautiful prototype of rooms that inspire you.
@@ -44,7 +42,7 @@ export default function ExploreSection() {
               <span>Bedroom</span>
             </p>
 
-            <h3 className="text-[1.75rem] font-semibold text-[#3A3A3A]">Inner Peace</h3>
+            <h3 className="text-subheading font-semibold text-[#3A3A3A]">Inner Peace</h3>
 
             <Link
               href="/shop"

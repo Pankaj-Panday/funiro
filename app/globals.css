@@ -47,6 +47,18 @@
 
   --spacing-header: var(--header-height);
 
+  /* type scale */
+  --text-display: 3.25rem;
+  --text-display--line-height: 1.2;
+  --text-title: 3rem;
+  --text-title--line-height: 1.5;
+  --text-heading: 2.5rem;
+  --text-heading--line-height: 1.2;
+  --text-subheading: 1.5rem;
+  --text-subheading--line-height: 1.5;
+  --text-lead: 1.2rem;
+  --text-lead--line-height: 1.5;
+
   /* custom colors */
   --color-primary: var(--primary);
   --color-primary-active: var(--primary-active);
@@ -145,7 +157,13 @@
   html {
     @apply font-sans;
   }
-  @media (max-width: 640px) {
+  /* every rem-based size scales from here, so pages don't set their own responsive font sizes */
+  @media (width < 64rem) {
+    html {
+      font-size: 15px;
+    }
+  }
+  @media (width < 40rem) {
     html {
       font-size: 13px;
     }

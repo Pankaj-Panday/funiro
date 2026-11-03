@@ -23,16 +23,16 @@ export default function NotFound() {
           aria-hidden="true"
           className="border-primary/15 absolute size-40 rounded-full border sm:size-56 lg:size-64"
         />
-        <p aria-hidden="true" className="text-primary text-7xl leading-none font-bold sm:text-8xl lg:text-9xl">
+        <p aria-hidden="true" className="text-primary text-9xl leading-none font-bold">
           404
         </p>
       </div>
 
-      <h1 className="text-dark mt-6 text-2xl font-semibold sm:text-3xl lg:text-4xl">Page not found</h1>
+      <h1 className="text-dark text-heading mt-6 font-semibold">Page not found</h1>
 
-      <p className="text-light mt-4 max-w-md text-sm sm:text-base">
-        Sorry, we couldn&apos;t find the page you were looking for. It may have been moved, renamed, or never
-        existed.
+      <p className="text-light mt-4 max-w-md">
+        Sorry, we couldn&apos;t find the page you were looking for. It may have been moved, renamed,
+        or never existed.
       </p>
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -41,9 +41,12 @@ export default function NotFound() {
           Back to Home
         </Link>
 
-        <Link href="/shop" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 gap-2 px-6")}>
+        <Link
+          href="/shop"
+          className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 gap-2 px-6")}
+        >
           Continue Shopping
-          <ArrowRight className="group-hover/button:translate-x-1 size-4 transition-transform duration-200" />
+          <ArrowRight className="size-4 transition-transform duration-200 group-hover/button:translate-x-1" />
         </Link>
       </div>
     </section>

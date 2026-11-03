@@ -10,9 +10,7 @@ export default function SetupGallery() {
         Share your setup with
       </p>
 
-      <h2 className="text-center text-[2.5rem] leading-[1.2] font-bold text-[#3a3a3a]">
-        #FuniroFurniture
-      </h2>
+      <h2 className="text-heading text-center font-bold text-[#3a3a3a]">#FuniroFurniture</h2>
 
       <div className="mt-5 h-auto xl:h-180">
         <div className="mx-auto grid auto-rows-75 grid-cols-[250px] place-content-center gap-3 sm:grid-cols-[250px_250px] lg:-mt-5 lg:h-180 lg:grid-cols-[1fr_1fr_3.6fr_3.1fr_1.8fr_1.1fr_1.3fr_1.3fr] lg:grid-rows-[1fr_1.2fr_3.3fr_0.7fr_1.2fr_1.2fr_0.9fr]">

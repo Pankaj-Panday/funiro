@@ -42,7 +42,7 @@ export default function ProductCard({ product }: Props) {
         <h4>
           <Link
             href={`/product/${id}`}
-            className="mb-2 block text-2xl leading-[1.2] font-semibold text-[#3A3A3A] sm:text-[1.3rem]"
+            className="mb-2 block text-xl leading-[1.2] font-semibold text-[#3A3A3A]"
           >
             {name.toUpperCase()}
           </Link>
