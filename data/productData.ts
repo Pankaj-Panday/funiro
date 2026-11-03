@@ -1,4 +1,6 @@
-const productsList = [
+import type { Product } from "@/types/product/product.types";
+
+const productsList: Product[] = [
 	{
 		id: 1,
 		name: "Shadow Sentinel",
@@ -7,7 +9,6 @@ const productsList = [
 		discountPercent: 30,
 		featured: true,
 		isNew: true,
-		isWishlisted: true,
 		thumbnail:
 			"https://images.pexels.com/photos/11112735/pexels-photo-11112735.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		rating: 4.5,
@@ -48,7 +49,6 @@ const productsList = [
 		discountPercent: 0,
 		featured: true,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/2762247/pexels-photo-2762247.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.7,
@@ -89,7 +89,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: true,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/11112750/pexels-photo-11112750.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.3,
@@ -130,7 +129,6 @@ const productsList = [
 		discountPercent: 25,
 		featured: true,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/11112731/pexels-photo-11112731.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.2,
@@ -171,7 +169,6 @@ const productsList = [
 		discountPercent: 10,
 		featured: true,
 		isNew: false,
-		isWishlisted: true,
 		thumbnail:
 			"https://images.pexels.com/photos/11112741/pexels-photo-11112741.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 0,
@@ -212,7 +209,6 @@ const productsList = [
 		discountPercent: 18,
 		featured: true,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/11112733/pexels-photo-11112733.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.1,
@@ -253,7 +249,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: true,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/11112742/pexels-photo-11112742.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.5,
@@ -294,7 +289,6 @@ const productsList = [
 		discountPercent: 12,
 		featured: true,
 		isNew: true,
-		isWishlisted: true,
 		thumbnail:
 			"https://images.pexels.com/photos/4075680/pexels-photo-4075680.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.7,
@@ -335,7 +329,6 @@ const productsList = [
 		discountPercent: 8,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/13718035/pexels-photo-13718035.png?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.2,
@@ -376,7 +369,6 @@ const productsList = [
 		discountPercent: 22,
 		featured: false,
 		isNew: true,
-		isWishlisted: true,
 		thumbnail:
 			"https://images.pexels.com/photos/10965604/pexels-photo-10965604.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.3,
@@ -417,7 +409,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/12269763/pexels-photo-12269763.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 5,
@@ -458,7 +449,6 @@ const productsList = [
 		discountPercent: 10,
 		featured: false,
 		isNew: true,
-		isWishlisted: true,
 		thumbnail:
 			"https://images.pexels.com/photos/709767/pexels-photo-709767.png?auto=compress&cs=tinysrgb&w=600",
 		rating: 2.9,
@@ -499,7 +489,6 @@ const productsList = [
 		discountPercent: 20,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/20035935/pexels-photo-20035935/free-photo-of-bedside-design-ikea.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 5,
@@ -540,7 +529,6 @@ const productsList = [
 		discountPercent: 5,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/16249600/pexels-photo-16249600/free-photo-of-xanadu-outdoor-spani-hot-rope-armchair-aluminum-frame-with-sunproof-cushion.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 2.9,
@@ -581,7 +569,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/17488642/pexels-photo-17488642/free-photo-of-silla-3d-lateral.png?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.7,
@@ -622,7 +609,6 @@ const productsList = [
 		discountPercent: 12,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/16249628/pexels-photo-16249628/free-photo-of-xanadu-outdoor-mordern-stylish-armchair-garden-teak-rope-chair.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.3,
@@ -663,7 +649,6 @@ const productsList = [
 		discountPercent: 8,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/116910/pexels-photo-116910.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 5,
@@ -704,7 +689,6 @@ const productsList = [
 		discountPercent: 25,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/10559701/pexels-photo-10559701.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 1.3,
@@ -745,7 +729,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/5716714/pexels-photo-5716714.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 5,
@@ -786,7 +769,6 @@ const productsList = [
 		discountPercent: 18,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/13554883/pexels-photo-13554883.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 2.6,
@@ -827,7 +809,6 @@ const productsList = [
 		discountPercent: 20,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/3144581/pexels-photo-3144581.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 2.8,
@@ -868,7 +849,6 @@ const productsList = [
 		discountPercent: 10,
 		featured: false,
 		isNew: true,
-		isWishlisted: true,
 		thumbnail:
 			"https://images.pexels.com/photos/930390/pexels-photo-930390.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.8,
@@ -909,7 +889,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/1813502/pexels-photo-1813502.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 0.5,
@@ -950,7 +929,6 @@ const productsList = [
 		discountPercent: 22,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 1.3,
@@ -991,7 +969,6 @@ const productsList = [
 		discountPercent: 8,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/133919/pexels-photo-133919.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 0,
@@ -1032,7 +1009,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.9,
@@ -1073,7 +1049,6 @@ const productsList = [
 		discountPercent: 10,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/1125135/pexels-photo-1125135.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.1,
@@ -1114,7 +1089,6 @@ const productsList = [
 		discountPercent: 18,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/3209045/pexels-photo-3209045.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 2.3,
@@ -1155,7 +1129,6 @@ const productsList = [
 		discountPercent: 12,
 		featured: false,
 		isNew: false,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/275484/pexels-photo-275484.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 3.7,
@@ -1196,7 +1169,6 @@ const productsList = [
 		discountPercent: 15,
 		featured: false,
 		isNew: true,
-		isWishlisted: false,
 		thumbnail:
 			"https://images.pexels.com/photos/3965534/pexels-photo-3965534.jpeg?auto=compress&cs=tinysrgb&w=600",
 		rating: 4.1,

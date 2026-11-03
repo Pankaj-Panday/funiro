@@ -4,8 +4,8 @@ export default function HeroSection() {
   return (
     <section className="h-[calc(100vh-var(--header-height))] max-h-180 min-h-100 bg-[url('/assets/homepage/heroSectionbg.jpg')] bg-cover bg-bottom bg-no-repeat">
       <div className="page-container flex h-full items-center justify-end">
-        <div className="w-full rounded-[10px] bg-[#FFF3E3] px-10 pt-[3.8rem] pb-[2.4rem] lg:w-1/2">
-          <p className="text-sm font-semibold tracking-[3px] text-[#333333] uppercase">
+        <div className="w-full rounded-[10px] bg-peach px-10 pt-[3.8rem] pb-[2.4rem] lg:w-1/2">
+          <p className="text-sm font-semibold tracking-[3px] text-ink uppercase">
             New Arrival
           </p>
 
@@ -13,14 +13,14 @@ export default function HeroSection() {
             Discover Our <br /> New Collection
           </h1>
 
-          <p className="mb-8 text-lg leading-6 font-medium text-[#333333] sm:leading-[1.3]">
+          <p className="mb-8 text-lg leading-6 font-medium text-ink sm:leading-[1.3]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
             ullamcorper mattis.
           </p>
 
           <Link
             href="/shop"
-            className="bg-primary active:bg-primary-active inline-block px-[4.2rem] py-[1.3rem] text-white"
+            className="bg-primary active:bg-primary-active inline-block px-[4.2rem] py-[1.3rem] text-primary-foreground"
           >
             Buy Now
           </Link>

@@ -3,14 +3,14 @@
 import { Heart, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { navItems } from "@/constants/header/header.constants";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import Logo from "../shared/logo";
 import { HamburgerIcon } from "./hamburger-icon";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Header() {
   const pathname = usePathname();
@@ -18,15 +18,9 @@ export default function Header() {
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
-  useEffect(() => {
-    if (isDesktop) {
-      setOpen(false);
-    }
-  }, [isDesktop]);
-
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white">
+      <header className="sticky top-0 z-40 bg-background">
         <div className="page-container h-header flex items-center justify-between gap-12.5">
           <Logo />
 
@@ -74,13 +68,13 @@ export default function Header() {
       </header>
 
       {/* Mobile Menu */}
-      <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet open={open && !isDesktop} onOpenChange={setOpen}>
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50 lg:hidden">
           <div className="page-container h-header flex items-center justify-end">
             <SheetTrigger
               render={
                 <HamburgerIcon
-                  open={open}
+                  open={open && !isDesktop}
                   onClick={() => setOpen((prev) => !prev)}
                   className="pointer-events-auto"
                 />

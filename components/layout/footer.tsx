@@ -1,16 +1,18 @@
 "use client";
 
-import { helpLinks, navLinks } from "@/constants/footer/footer.constants";
 import Link from "next/link";
-import Logo from "../shared/logo";
 import { usePathname } from "next/navigation";
+
+import { helpLinks, navLinks } from "@/constants/footer/footer.constants";
 import { cn } from "@/lib/utils";
+
+import Logo from "../shared/logo";
 
 export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <footer className="border-dark/20 text-dark border-t bg-white">
+    <footer className="border-dark/20 text-dark border-t bg-background">
       <div className="page-container mx-auto">
         <div className="mt-[50px] flex flex-col gap-[50px] lg:flex-row lg:justify-between">
           {/* Logo */}
@@ -92,7 +94,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="mt-12 border-[#D9D9D9]" />
+        <hr className="mt-12 border-border" />
 
         <p className="my-[35px]">{new Date().getFullYear()} Funiro. All rights reserved.</p>
       </div>

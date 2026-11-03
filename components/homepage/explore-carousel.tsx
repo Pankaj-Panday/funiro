@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
-import Image from "next/image";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import * as React from "react";
 
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { ExploreSlide } from "@/types/homepage/homepage.types";
@@ -45,7 +45,7 @@ export default function ExploreCarousel({ slides }: ExploreCarouselProps) {
           {slides.map((slide) => (
             <CarouselItem key={slide.id}>
               <div className="relative h-[34rem] w-full overflow-hidden">
-                <Image src={slide.image} alt="" fill className="object-cover" priority />
+                <Image src={slide.image} alt="" fill className="object-cover" />
               </div>
             </CarouselItem>
           ))}
@@ -53,7 +53,7 @@ export default function ExploreCarousel({ slides }: ExploreCarouselProps) {
 
         <button
           onClick={() => api?.scrollNext()}
-          className="absolute top-1/2 right-4 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition hover:scale-105 active:scale-95"
+          className="absolute top-1/2 right-4 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-background shadow-lg transition hover:scale-105 active:scale-95"
         >
           <ChevronRight className="text-primary h-5 w-5" />
         </button>
