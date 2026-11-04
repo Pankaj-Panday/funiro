@@ -18,6 +18,10 @@ export default function Header() {
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
+  if (isDesktop && open) {
+    setOpen(false);
+  }
+
   return (
     <>
       <header className="bg-background sticky top-0 z-40">
@@ -68,13 +72,13 @@ export default function Header() {
       </header>
 
       {/* Mobile Menu */}
-      <Sheet open={open && !isDesktop} onOpenChange={setOpen}>
+      <Sheet open={open} onOpenChange={setOpen}>
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50 lg:hidden">
           <div className="page-container h-header flex items-center justify-end">
             <SheetTrigger
               render={
                 <HamburgerIcon
-                  open={open && !isDesktop}
+                  open={open}
                   onClick={() => setOpen((prev) => !prev)}
                   className="pointer-events-auto"
                 />
