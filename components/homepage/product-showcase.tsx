@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import productsList from "@/data/productData";
 
-import ProductCard from "../shared/product-card";
+import ProductGrid from "../shared/product-grid";
 
 export default function ProductShowCase() {
   const featuredProducts = productsList.filter((product) => product.featured);
@@ -12,13 +12,7 @@ export default function ProductShowCase() {
       <div className="page-container">
         <h2 className="text-heading text-ink text-center font-bold">Our Products</h2>
 
-        <ul className="mx-auto my-8 grid w-[70%] gap-8 sm:w-full sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
-          {featuredProducts?.map((product) => (
-            <li key={product.id}>
-              <ProductCard product={product} />
-            </li>
-          ))}
-        </ul>
+        <ProductGrid products={featuredProducts} />
 
         <Link
           href="/shop"

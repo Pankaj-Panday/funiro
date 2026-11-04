@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import FormatPrice from "@/components/shared/format-price";
+import { getEffectivePrice } from "@/lib/product-price";
 import type { Product } from "@/types/product/product.types";
 
 type Props = {
@@ -11,12 +12,10 @@ type Props = {
 export default function ProductCard({ product }: Props) {
   const { id, name, category, price, rating, discountPercent, isNew, thumbnail } = product;
 
-  const effectivePrice = discountPercent
-    ? Math.round((price * (100 - discountPercent)) / 100)
-    : price;
+  const effectivePrice = getEffectivePrice(product);
 
   return (
-    <div className="h-full w-full min-w-60">
+    <div className="h-full w-full">
       <div className="relative h-75 w-full overflow-hidden sm:h-60">
         <Image
           src={thumbnail}
