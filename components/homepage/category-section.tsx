@@ -1,14 +1,15 @@
-import { categories } from "@/constants/homepage/homepage";
 import Image from "next/image";
 import Link from "next/link";
+
+import { categories } from "@/constants/homepage/homepage";
 
 export default function Categories() {
   return (
     <section className="mt-14">
       <div className="page-container">
-        <h2 className="text-center text-[2rem] font-semibold text-[#333333]">Browse The Range</h2>
+        <h2 className="text-heading text-ink text-center font-semibold">Browse The Range</h2>
 
-        <p className="mt-2 text-center text-xl text-[#666666]">
+        <p className="text-ink-muted mt-2 text-center text-xl">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
 
@@ -25,8 +26,8 @@ export default function Categories() {
                 />
               </Link>
 
-              <h3 className="mt-3 text-center text-2xl font-bold md:mt-7.5">
-                <Link href="/shop" className="text-[#333333]">
+              <h3 className="text-subheading mt-3 text-center font-bold md:mt-7.5">
+                <Link href="/shop" className="text-ink">
                   {category.name}
                 </Link>
               </h3>

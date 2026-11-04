@@ -1,26 +1,26 @@
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import ExploreCarousel from "./explore-carousel";
+
 import { exploreSlides } from "@/constants/homepage/homepage";
+
+import ExploreCarousel from "./explore-carousel";
 
 export default function ExploreSection() {
   return (
-    <section className="mt-[4.3rem] bg-[#FCF8F3] py-11">
+    <section className="bg-cream-light mt-[4.3rem] py-11">
       <div className="mx-auto flex w-[95%] max-w-[90rem] flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         {/* Left Content */}
         <div className="w-full lg:w-[42%]">
-          <h2 className="text-4xl leading-tight font-bold text-[#3A3A3A]">
-            50+ Beautiful rooms inspiration
-          </h2>
+          <h2 className="text-heading text-ink font-bold">50+ Beautiful rooms inspiration</h2>
 
-          <p className="mt-3 max-w-md leading-7 text-[#616161]">
+          <p className="text-ink-muted mt-3 max-w-md leading-7">
             Our designer already made a lot of beautiful prototype of rooms that inspire you.
           </p>
 
           <Link
             href="/shop"
-            className="bg-primary hover:bg-primary/90 mt-6 inline-flex min-w-44 items-center justify-center px-9 py-3 font-semibold text-white transition-colors"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground mt-6 inline-flex min-w-44 items-center justify-center px-9 py-3 font-semibold transition-colors"
           >
             Explore More
           </Link>
@@ -35,20 +35,20 @@ export default function ExploreSection() {
             className="object-cover"
           />
 
-          <div className="absolute bottom-[6%] left-[6%] bg-white/70 px-8 py-8 backdrop-blur-sm">
-            <p className="mb-2 flex items-center text-sm font-medium text-[#616161]">
+          <div className="bg-background/70 absolute bottom-[6%] left-[6%] px-8 py-8 backdrop-blur-sm">
+            <p className="text-ink-muted mb-2 flex items-center text-sm font-medium">
               <span>01</span>
 
-              <span className="mx-2 h-px w-7 bg-[#616161]" />
+              <span className="bg-ink-muted mx-2 h-px w-7" />
 
               <span>Bedroom</span>
             </p>
 
-            <h3 className="text-[1.75rem] font-semibold text-[#3A3A3A]">Inner Peace</h3>
+            <h3 className="text-subheading text-ink font-semibold">Inner Peace</h3>
 
             <Link
               href="/shop"
-              className="bg-primary absolute bottom-0 left-full flex h-12 w-12 items-center justify-center text-white"
+              className="bg-primary text-primary-foreground absolute bottom-0 left-full flex h-12 w-12 items-center justify-center"
             >
               <ArrowRight className="h-5 w-5" />
             </Link>

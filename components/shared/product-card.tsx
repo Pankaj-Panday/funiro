@@ -1,14 +1,15 @@
-import FormatPrice from "@/components/shared/format-price";
 import Image from "next/image";
 import Link from "next/link";
 
+import FormatPrice from "@/components/shared/format-price";
+import type { Product } from "@/types/product/product.types";
+
 type Props = {
-  product: any;
+  product: Product;
 };
 
 export default function ProductCard({ product }: Props) {
-  const { id, name, category, price, rating, discountPercent, isNew, isWishlisted, thumbnail } =
-    product;
+  const { id, name, category, price, rating, discountPercent, isNew, thumbnail } = product;
 
   const effectivePrice = discountPercent
     ? Math.round((price * (100 - discountPercent)) / 100)
@@ -26,42 +27,42 @@ export default function ProductCard({ product }: Props) {
         />
 
         {discountPercent > 0 && (
-          <span className="absolute top-2 right-2 grid size-12 place-items-center rounded-full bg-[#E97171] text-sm font-medium text-white">
+          <span className="bg-badge-sale text-primary-foreground absolute top-2 right-2 grid size-12 place-items-center rounded-full text-sm font-medium">
             -{discountPercent}%
           </span>
         )}
 
         {isNew && (
-          <span className="absolute top-16 right-2 grid size-12 place-items-center rounded-full bg-[#2EC1AC] text-sm font-medium text-white">
+          <span className="bg-badge-new text-primary-foreground absolute top-16 right-2 grid size-12 place-items-center rounded-full text-sm font-medium">
             New
           </span>
         )}
       </div>
 
-      <div className="bg-[#F4F5F7] p-4 pb-7.5">
+      <div className="bg-surface p-4 pb-7.5">
         <h4>
           <Link
             href={`/product/${id}`}
-            className="mb-2 block text-2xl leading-[1.2] font-semibold text-[#3A3A3A] sm:text-[1.3rem]"
+            className="text-ink mb-2 block text-xl leading-[1.2] font-semibold"
           >
             {name.toUpperCase()}
           </Link>
         </h4>
 
-        <div className="mb-2 flex items-center justify-between text-base font-medium text-[#898989]">
+        <div className="text-muted-foreground mb-2 flex items-center justify-between text-base font-medium">
           <span>{category}</span>
 
-          <span className="text-sm font-normal text-black/70">
+          <span className="text-dark/70 text-sm font-normal">
             {rating > 0 ? `(${rating})` : "No rating"}
           </span>
         </div>
 
         <div className="flex items-center justify-between">
-          <FormatPrice price={effectivePrice} className="text-xl font-semibold text-[#3A3A3A]" />
+          <FormatPrice price={effectivePrice} className="text-ink text-xl font-semibold" />
 
           {discountPercent > 0 && (
             <s>
-              <FormatPrice price={price} className="text-base font-normal text-[#B0B0B0]" />
+              <FormatPrice price={price} className="text-light text-base font-normal" />
             </s>
           )}
         </div>

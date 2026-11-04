@@ -1,8 +1,10 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/layout/header";
+
 import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 
 const poppins = Poppins({
   variable: "--font-poppins",

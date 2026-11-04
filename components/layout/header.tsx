@@ -3,30 +3,28 @@
 import { Heart, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { navItems } from "@/constants/header/header.constants";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import Logo from "../shared/logo";
 import { HamburgerIcon } from "./hamburger-icon";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const isDesktop = useMediaQuery("(min-width: 841px)");
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
-  useEffect(() => {
-    if (isDesktop) {
-      setOpen(false);
-    }
-  }, [isDesktop]);
+  if (isDesktop && open) {
+    setOpen(false);
+  }
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white">
+      <header className="bg-background sticky top-0 z-40">
         <div className="page-container h-header flex items-center justify-between gap-12.5">
           <Logo />
 

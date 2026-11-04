@@ -47,12 +47,33 @@
 
   --spacing-header: var(--header-height);
 
+  /* type scale */
+  --text-display: 3.25rem;
+  --text-display--line-height: 1.2;
+  --text-title: 3rem;
+  --text-title--line-height: 1.5;
+  --text-heading: 2.5rem;
+  --text-heading--line-height: 1.2;
+  --text-subheading: 1.5rem;
+  --text-subheading--line-height: 1.5;
+  --text-lead: 1.2rem;
+  --text-lead--line-height: 1.5;
+
   /* custom colors */
   --color-primary: var(--primary);
   --color-primary-active: var(--primary-active);
 
   --color-light: var(--light);
   --color-dark: var(--dark);
+  --color-cream: var(--cream);
+  --color-cream-light: var(--cream-light);
+  --color-peach: var(--peach);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-badge-sale: var(--badge-sale);
+  --color-badge-new: var(--badge-new);
+  --color-body: var(--body);
 }
 
 :root {
@@ -93,6 +114,15 @@
 
   --light: #9f9f9f;
   --dark: #000000;
+  --cream: #faf3ea;
+  --cream-light: #fcf8f3;
+  --peach: #fff3e3;
+  --surface: #f4f5f7;
+  --ink: #3a3a3a;
+  --ink-muted: #616161;
+  --badge-sale: #e97171;
+  --badge-new: #2ec1ac;
+  --body: #313131;
 
   --header-height: 100px;
 }
@@ -141,11 +171,21 @@
   html {
     @apply font-sans;
   }
-  @media (max-width: 640px) {
+  /* every rem-based size scales from here, so pages don't set their own responsive font sizes */
+  @media (width < 64rem) {
+    html {
+      font-size: 15px;
+    }
+  }
+  @media (width < 40rem) {
     html {
       font-size: 13px;
     }
   }
+}
+
+@utility content-container {
+  @apply mx-auto w-[92%] max-w-310 lg:w-[82%];
 }
 
 @utility page-container {
