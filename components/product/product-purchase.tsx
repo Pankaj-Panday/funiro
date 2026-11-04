@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,9 @@ type Props = {
   stock: number;
 };
 
-const actionClass = "border-dark h-12 rounded-2xl text-base";
+const actionHeight = "h-11 sm:h-13 lg:h-16";
+const actionClass = `border-dark cursor-pointer rounded-[1rem] bg-transparent px-6 text-xl font-normal sm:px-8 ${actionHeight}`;
+const stepperClass = "h-full w-6 cursor-pointer rounded-none px-0 sm:w-8";
 
 export default function ProductPurchase({ sizes, colors, stock }: Props) {
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
@@ -22,23 +24,27 @@ export default function ProductPurchase({ sizes, colors, stock }: Props) {
   const outOfStock = stock < 1;
 
   return (
-    <div className="mt-6">
-      <p className="text-light mb-3 text-sm">Size</p>
-      <div className="flex gap-3">
+    <div>
+      <p className="text-light mt-6 mb-3.5 text-sm">Size</p>
+      <div className="flex gap-4">
         {sizes.map((size) => (
-          <Button
+          <button
             key={size}
-            variant={size === selectedSize ? "default" : "ghost"}
-            size="icon"
+            type="button"
             onClick={() => setSelectedSize(size)}
-            className={cn("cursor-pointer", size !== selectedSize && "bg-cream")}
+            className={cn(
+              "size-7.5 cursor-pointer rounded-[5px] text-sm",
+              size === selectedSize
+                ? "bg-primary text-primary-foreground"
+                : "bg-cream hover:bg-primary/15",
+            )}
           >
             {size}
-          </Button>
+          </button>
         ))}
       </div>
 
-      <p className="text-light mt-5 mb-3 text-sm">Color</p>
+      <p className="text-light mt-4.5 mb-3.5 text-sm">Color</p>
       <div className="flex gap-4">
         {colors.map((color) => (
           <button
@@ -48,48 +54,46 @@ export default function ProductPurchase({ sizes, colors, stock }: Props) {
             onClick={() => setSelectedColor(color)}
             style={{ backgroundColor: color }}
             className={cn(
-              "size-7.5 cursor-pointer rounded-full opacity-50 transition-opacity",
+              "size-7.5 cursor-pointer rounded-full opacity-50",
               color === selectedColor && "outline-primary opacity-100 outline-2 outline-offset-2",
             )}
           />
         ))}
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-3">
-        <div className="border-dark flex h-12 items-center rounded-2xl border px-1">
+      <div className="mt-8 flex flex-wrap gap-1.5 lg:gap-5">
+        <div
+          className={cn(
+            "border-dark flex items-center overflow-hidden rounded-[1rem] border",
+            actionHeight,
+          )}
+        >
           <Button
             variant="ghost"
-            size="icon"
             aria-label="Decrease quantity"
             disabled={outOfStock || quantity <= 1}
             onClick={() => setQuantity(quantity - 1)}
-            className="cursor-pointer"
+            className={stepperClass}
           >
             <Minus />
           </Button>
-          <span className="min-w-8 text-center text-base">{quantity}</span>
+          <span className="min-w-8 text-center text-xl">{quantity}</span>
           <Button
             variant="ghost"
-            size="icon"
             aria-label="Increase quantity"
             disabled={outOfStock || quantity >= stock}
             onClick={() => setQuantity(quantity + 1)}
-            className="cursor-pointer"
+            className={stepperClass}
           >
             <Plus />
           </Button>
         </div>
 
-        <Button
-          variant="outline"
-          disabled={outOfStock}
-          className={cn(actionClass, "flex-1 cursor-pointer px-6 sm:flex-none")}
-        >
-          Add to Cart
+        <Button variant="outline" disabled={outOfStock} className={actionClass}>
+          Add To Cart
         </Button>
 
-        <Button variant="outline" className={cn(actionClass, "cursor-pointer px-6")}>
-          <Heart />
+        <Button variant="outline" className={cn(actionClass, "min-w-42")}>
           Wishlist
         </Button>
       </div>

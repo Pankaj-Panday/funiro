@@ -8,26 +8,35 @@ type Props = {
   product: Product;
 };
 
+// The hidden ::before reserves the medium-weight width, so switching tabs can't shift the row
 const triggerClass =
-  "text-lead flex-none cursor-pointer px-2 py-1 font-normal after:bg-primary data-active:font-medium";
+  "text-subheading text-light data-active:text-dark inline-grid h-auto flex-none cursor-pointer justify-items-center rounded-none border-0 p-0 font-normal transition-colors group-data-[variant=line]/tabs-list:data-active:after:opacity-0 before:invisible before:h-0 before:overflow-hidden before:font-medium before:content-[attr(data-label)] data-active:font-medium";
 
 export default function ProductTabs({ product }: Props) {
   const { name, category, stock, sizes, colors, images, rating, reviewCount } = product;
 
   return (
-    <section className="border-border border-y py-8 lg:py-12">
-      <Tabs defaultValue="description" className="content-container gap-8">
+    <section className="border-border border-y py-8 sm:py-12">
+      <Tabs defaultValue="description" className="content-container gap-9">
         <TabsList
           variant="line"
-          className="w-full flex-wrap gap-x-2 gap-y-2 group-data-horizontal/tabs:h-auto sm:gap-x-6"
+          className="w-full flex-col items-start gap-2.5 p-0 group-data-horizontal/tabs:h-auto sm:flex-row sm:justify-center sm:gap-12.5"
         >
-          <TabsTrigger value="description" className={triggerClass}>
+          <TabsTrigger value="description" data-label="Description" className={triggerClass}>
             Description
           </TabsTrigger>
-          <TabsTrigger value="additional" className={triggerClass}>
-            Additional Info
+          <TabsTrigger
+            value="additional"
+            data-label="Additional Information"
+            className={triggerClass}
+          >
+            Additional Information
           </TabsTrigger>
-          <TabsTrigger value="reviews" className={triggerClass}>
+          <TabsTrigger
+            value="reviews"
+            data-label={`Reviews [${reviewCount}]`}
+            className={triggerClass}
+          >
             Reviews [{reviewCount}]
           </TabsTrigger>
         </TabsList>
@@ -35,7 +44,7 @@ export default function ProductTabs({ product }: Props) {
         <TabsContent value="description" className="text-base">
           <p className="text-light">{product.longDescription}</p>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="mt-8.5 grid gap-8 sm:grid-cols-2 sm:gap-[4%]">
             {images.slice(1, 3).map((image) => (
               <div
                 key={image.url}

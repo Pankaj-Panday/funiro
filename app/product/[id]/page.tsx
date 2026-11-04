@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: Props) {
     <>
       <ProductBreadcrumb name={product.name} />
 
-      <section className="content-container my-8 grid gap-8 md:grid-cols-2 lg:my-12 lg:gap-16">
+      <section className="content-container mt-8 mb-16.5 grid gap-6 sm:grid-cols-2 sm:gap-x-[4%]">
         <ProductGallery key={`gallery-${product.id}`} images={product.images} name={product.name} />
         <ProductInfo key={`info-${product.id}`} product={product} />
       </section>
@@ -49,8 +49,8 @@ export default async function ProductPage({ params }: Props) {
       <ProductTabs product={product} />
 
       {relatedProducts.length > 0 && (
-        <section className="content-container my-12 lg:my-18">
-          <h2 className="text-ink text-heading text-center font-medium">Related Products</h2>
+        <section className="content-container my-8 sm:mt-18.5 sm:mb-14.5">
+          <h2 className="text-heading text-dark mb-6 text-center font-medium">Related Products</h2>
 
           <ProductGrid products={relatedProducts} />
 
