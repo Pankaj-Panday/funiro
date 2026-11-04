@@ -19,7 +19,7 @@ export default function ProductGallery({ images, name }: Props) {
       <div className="grid grid-cols-4 content-start gap-4 md:w-[17%] md:grid-cols-1">
         {images.map((image, index) => (
           <button
-            key={image.url}
+            key={index}
             type="button"
             aria-label={`Show image ${index + 1} of ${name}`}
             onClick={() => setActiveIndex(index)}

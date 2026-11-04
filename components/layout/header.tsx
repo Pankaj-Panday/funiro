@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, ShoppingCart, User } from "lucide-react";
+import { Heart, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -10,6 +10,7 @@ import { navItems } from "@/constants/header/header.constants";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import Logo from "../shared/logo";
+import CartIcon from "./cart-icon";
 import { HamburgerIcon } from "./hamburger-icon";
 
 export default function Header() {
@@ -62,7 +63,7 @@ export default function Header() {
 
                 <li>
                   <Link href="/cart">
-                    <ShoppingCart className="h-5 w-5" />
+                    <CartIcon />
                   </Link>
                 </li>
               </ul>
@@ -110,7 +111,7 @@ export default function Header() {
 
               <li>
                 <SheetClose nativeButton={false} render={<Link href="/cart" />}>
-                  <ShoppingCart className="h-5 w-5" />
+                  <CartIcon />
                 </SheetClose>
               </li>
             </ul>

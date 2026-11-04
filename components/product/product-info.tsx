@@ -12,7 +12,7 @@ type Props = {
 
 export default function ProductInfo({ product }: Props) {
   const { name, price, discountPercent, rating, reviewCount, shortDescription } = product;
-  const { category, tags, stock, sizes, colors } = product;
+  const { category, tags, stock } = product;
 
   const details = [
     {
@@ -49,7 +49,7 @@ export default function ProductInfo({ product }: Props) {
 
       <p className="mt-4.5 lg:w-[70%]">{shortDescription}</p>
 
-      <ProductPurchase sizes={sizes} colors={colors} stock={stock} />
+      <ProductPurchase product={product} />
 
       <hr className="border-border my-8 sm:mt-15 sm:mb-10 lg:mt-20" />
 

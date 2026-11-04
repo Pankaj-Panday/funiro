@@ -45,11 +45,8 @@ export default function ProductTabs({ product }: Props) {
           <p className="text-light">{product.longDescription}</p>
 
           <div className="mt-8.5 grid gap-8 sm:grid-cols-2 sm:gap-[4%]">
-            {images.slice(1, 3).map((image) => (
-              <div
-                key={image.url}
-                className="bg-cream relative aspect-4/3 overflow-hidden rounded-lg"
-              >
+            {images.slice(1, 3).map((image, index) => (
+              <div key={index} className="bg-cream relative aspect-4/3 overflow-hidden rounded-lg">
                 <Image
                   src={image.url}
                   alt={name}
