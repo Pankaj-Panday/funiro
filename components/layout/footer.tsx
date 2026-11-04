@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
 import { helpLinks, navLinks } from "@/constants/footer/footer.constants";
 import { cn } from "@/lib/utils";
 
@@ -84,12 +85,14 @@ export default function Footer() {
                 className="border-dark placeholder:text-light w-[200px] border-0 border-b bg-transparent px-[2px] py-[9px] text-sm outline-none placeholder:text-sm placeholder:font-normal"
               />
 
-              <button
+              <Button
                 type="submit"
-                className="hover:text-primary border-dark border-0 border-b bg-transparent px-[2px] py-[9px] text-sm font-medium uppercase transition-colors active:pb-[7px]"
+                variant="text"
+                size="none"
+                className="border-dark rounded-none border-0 border-b px-[2px] py-[9px] uppercase"
               >
                 Subscribe
-              </button>
+              </Button>
             </form>
           </div>
         </div>

@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
-
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/button";
 import { clearCart, useCartItems, useCartReady } from "@/lib/cart/cart-store";
 import { getCartTotals } from "@/lib/cart/cart-totals";
 import { cn } from "@/lib/utils";
@@ -39,15 +37,9 @@ export default function CartContents() {
         {items.length === 0 ? (
           <div className="pt-12 text-center">
             <p>No Items in Cart</p>
-            <Link
-              href="/shop"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "border-primary text-primary hover:text-primary mt-6 h-11 rounded-lg px-8 text-base",
-              )}
-            >
+            <ButtonLink href="/shop" variant="outline-primary" className="mt-6 h-11 px-8 text-base">
               Continue Shopping
-            </Link>
+            </ButtonLink>
           </div>
         ) : (
           <>
@@ -60,8 +52,9 @@ export default function CartContents() {
             <hr className="border-light" />
 
             <Button
+              size="none"
               onClick={clearCart}
-              className="mt-8 h-auto cursor-pointer rounded-lg border-0 px-8 py-2.75 text-xs tracking-[1px]"
+              className="mt-8 px-8 py-2.75 text-xs tracking-[1px]"
             >
               Clear All
             </Button>

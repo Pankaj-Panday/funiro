@@ -56,7 +56,7 @@ export default function CartRow({ item }: Props) {
         size="icon"
         aria-label={`Remove ${name} from cart`}
         onClick={() => removeFromCart(id)}
-        className="text-primary hover:text-primary col-start-2 row-start-1 cursor-pointer self-start justify-self-end sm:col-start-5 sm:self-center sm:justify-self-center"
+        className="text-primary col-start-2 row-start-1 self-start justify-self-end sm:col-start-5 sm:self-center sm:justify-self-center"
       >
         <Trash2 className="size-5" />
       </Button>
@@ -73,7 +73,6 @@ export default function CartRow({ item }: Props) {
           aria-label={`Decrease quantity of ${name}`}
           disabled={quantity <= 1}
           onClick={() => updateCartQuantity(id, quantity - 1)}
-          className="cursor-pointer"
         >
           <Minus className="size-4" />
         </Button>
@@ -86,7 +85,6 @@ export default function CartRow({ item }: Props) {
           aria-label={`Increase quantity of ${name}`}
           disabled={quantity >= stock}
           onClick={() => updateCartQuantity(id, quantity + 1)}
-          className="cursor-pointer"
         >
           <Plus className="size-4" />
         </Button>

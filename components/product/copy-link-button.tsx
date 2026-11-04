@@ -21,11 +21,7 @@ export default function CopyLinkButton() {
   }
 
   return (
-    <Button
-      variant="ghost"
-      onClick={copyLink}
-      className="text-dark -ml-2.5 cursor-pointer text-base"
-    >
+    <Button variant="ghost" onClick={copyLink} className="text-dark -ml-2.5 text-base">
       {copied ? <Check /> : <LinkIcon />}
       {copied ? "Copied" : "Copy link"}
     </Button>

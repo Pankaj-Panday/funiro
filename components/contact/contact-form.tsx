@@ -72,7 +72,8 @@ export default function ContactForm() {
 
       <Button
         type="submit"
-        className="hover:bg-primary-active active:bg-primary-active h-auto cursor-pointer rounded-[5px] px-20 py-3.5 text-base font-normal"
+        size="none"
+        className="rounded-[5px] px-20 py-3.75 text-base font-normal"
       >
         Send
       </Button>

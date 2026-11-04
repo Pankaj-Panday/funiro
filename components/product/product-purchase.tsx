@@ -14,8 +14,8 @@ type Props = {
 };
 
 const actionHeight = "h-11 sm:h-13 lg:h-16";
-const actionClass = `border-dark cursor-pointer rounded-[1rem] bg-transparent px-6 text-xl font-normal sm:px-8 ${actionHeight}`;
-const stepperClass = "h-full w-6 cursor-pointer rounded-none px-0 sm:w-8";
+const actionClass = `rounded-[1rem] px-6 text-xl font-normal sm:px-8 ${actionHeight}`;
+const stepperClass = "h-full w-6 rounded-none px-0 sm:w-8";
 
 export default function ProductPurchase({ product }: Props) {
   const { sizes, colors, stock } = product;

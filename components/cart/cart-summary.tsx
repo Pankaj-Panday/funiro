@@ -1,9 +1,6 @@
-import Link from "next/link";
-
 import FormatPrice from "@/components/shared/format-price";
-import { buttonVariants } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import type { getCartTotals } from "@/lib/cart/cart-totals";
-import { cn } from "@/lib/utils";
 
 type Props = {
   totals: ReturnType<typeof getCartTotals>;
@@ -38,15 +35,14 @@ export default function CartSummary({ totals }: Props) {
       </dl>
 
       {totalItems > 0 && (
-        <Link
+        <ButtonLink
           href="/checkout"
-          className={cn(
-            buttonVariants({ variant: "outline" }),
-            "border-dark mx-auto mt-12 flex h-auto w-4/5 rounded-[1rem] bg-transparent py-3.5 text-xl font-normal",
-          )}
+          variant="outline"
+          size="none"
+          className="mx-auto mt-12 flex w-4/5 rounded-[1rem] py-3.5 text-xl font-normal"
         >
           Check out
-        </Link>
+        </ButtonLink>
       )}
     </aside>
   );
