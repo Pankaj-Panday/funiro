@@ -73,6 +73,7 @@
   --color-ink-muted: var(--ink-muted);
   --color-badge-sale: var(--badge-sale);
   --color-badge-new: var(--badge-new);
+  --color-star: var(--star);
   --color-body: var(--body);
 }
 
@@ -122,6 +123,7 @@
   --ink-muted: #616161;
   --badge-sale: #e97171;
   --badge-new: #2ec1ac;
+  --star: #f8c90f;
   --body: #313131;
 
   --header-height: 100px;
