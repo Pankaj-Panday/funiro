@@ -9,15 +9,13 @@ import {
   pageSizes,
   type ShopFilterOptions,
   type ShopFilters,
-  type ShopSort,
   sortOptions,
   toShopQuery,
 } from "@/lib/shop/shop-filters";
 import { cn } from "@/lib/utils";
 
 import FilterPanel from "./filter-panel";
-
-const selectClass = "bg-background border-light ml-3 rounded-[7px] border p-2";
+import FilterSelect from "./filter-select";
 
 type Props = {
   filters: ShopFilters;
@@ -90,36 +88,27 @@ export default function ShopControls({ filters, options, shown, total }: Props) 
           </div>
 
           <div className="flex flex-wrap gap-x-8 gap-y-4">
-            <label>
+            <div className="flex items-center gap-3">
               Show
-              <select
+              <FilterSelect
+                label="Products per page"
+                className="w-20"
                 value={optimisticFilters.show}
-                onChange={(e) => updateFilters({ show: Number(e.target.value) })}
-                className={selectClass}
-              >
-                {pageSizes.map((size) => (
-                  <option key={size}>{size}</option>
-                ))}
-              </select>
-            </label>
+                items={pageSizes.map((size) => ({ label: String(size), value: size }))}
+                onChange={(show) => show && updateFilters({ show })}
+              />
+            </div>
 
-            <label>
+            <div className="flex items-center gap-3">
               Sort by
-              <select
-                value={optimisticFilters.sort ?? ""}
-                onChange={(e) =>
-                  updateFilters({ sort: (e.target.value || null) as ShopSort | null })
-                }
-                className={selectClass}
-              >
-                <option value="">--Select--</option>
-                {sortOptions.map(({ value, label }) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </select>
-            </label>
+              <FilterSelect
+                label="Sort products"
+                className="w-52"
+                value={optimisticFilters.sort}
+                items={[{ label: "--Select--", value: null }, ...sortOptions]}
+                onChange={(sort) => updateFilters({ sort })}
+              />
+            </div>
           </div>
         </div>
       </section>
