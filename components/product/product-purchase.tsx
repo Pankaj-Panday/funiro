@@ -1,27 +1,36 @@
 "use client";
 
 import { Minus, Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { addToCart } from "@/lib/cart/cart-store";
 import { cn } from "@/lib/utils";
+import type { Product } from "@/types/product/product.types";
 
 type Props = {
-  sizes: string[];
-  colors: string[];
-  stock: number;
+  product: Product;
 };
 
 const actionHeight = "h-11 sm:h-13 lg:h-16";
 const actionClass = `border-dark cursor-pointer rounded-[1rem] bg-transparent px-6 text-xl font-normal sm:px-8 ${actionHeight}`;
 const stepperClass = "h-full w-6 cursor-pointer rounded-none px-0 sm:w-8";
 
-export default function ProductPurchase({ sizes, colors, stock }: Props) {
+export default function ProductPurchase({ product }: Props) {
+  const { sizes, colors, stock } = product;
+  const router = useRouter();
+
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(1);
 
   const outOfStock = stock < 1;
+
+  function handleAddToCart() {
+    addToCart(product, { color: selectedColor, size: selectedSize, quantity });
+    router.push("/cart");
+  }
 
   return (
     <div>
@@ -89,7 +98,12 @@ export default function ProductPurchase({ sizes, colors, stock }: Props) {
           </Button>
         </div>
 
-        <Button variant="outline" disabled={outOfStock} className={actionClass}>
+        <Button
+          variant="outline"
+          disabled={outOfStock}
+          onClick={handleAddToCart}
+          className={actionClass}
+        >
           Add To Cart
         </Button>
 
