@@ -23,14 +23,14 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <section className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[auto_minmax(0,1fr)] md:gap-10 lg:gap-24">
-          <div className="space-y-10">
+        <section className="flex flex-col gap-12 md:flex-row md:justify-around md:gap-10">
+          <div className="space-y-10 md:shrink-0">
             {contactDetails.map(({ icon: Icon, title, lines }) => (
               <div key={title} className="flex gap-5 md:gap-7">
                 <Icon className="text-dark mt-1.5 size-6 shrink-0" />
 
                 <div>
-                  <h3 className="text-dark text-subheading font-medium">{title}</h3>
+                  <h3 className="text-dark text-subheading font-bold">{title}</h3>
                   {lines.map((line) => (
                     <p key={line} className="text-dark leading-normal">
                       {line}

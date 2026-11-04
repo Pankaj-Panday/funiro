@@ -2,11 +2,11 @@
 
 const fieldClass =
   "border-light placeholder:text-light focus:border-primary focus:ring-primary w-full rounded-[10px] border px-7 py-5 outline-none focus:ring-1";
-const labelClass = "text-dark mb-3 block font-medium";
+const labelClass = "text-dark mb-5.5 block font-medium";
 
 export default function ContactForm() {
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="w-full space-y-8">
+    <form onSubmit={(e) => e.preventDefault()} className="w-full space-y-9 md:max-w-lg">
       <div>
         <label htmlFor="name" className={labelClass}>
           Your name

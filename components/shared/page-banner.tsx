@@ -8,7 +8,7 @@ type Props = {
 
 export default function PageBanner({ title }: Props) {
   return (
-    <section className="relative grid h-56 place-content-center overflow-hidden text-center md:h-79">
+    <section className="relative grid h-79 place-content-center overflow-hidden text-center">
       <Image
         src="/assets/shared/secondaryHeaderBg.jpg"
         alt=""
