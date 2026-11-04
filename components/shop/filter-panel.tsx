@@ -96,13 +96,15 @@ export default function FilterPanel({ filters, options, onChange }: Props) {
         <div>
           <h3 className={headingClass}>Colors</h3>
           <div className="flex flex-wrap items-center gap-2">
-            <button
+            <Button
               type="button"
+              variant="text"
+              size="none"
               onClick={() => onChange({ color: "" })}
-              className={cn("cursor-pointer", !filters.color && "text-primary font-medium")}
+              className={cn("text-base font-normal", !filters.color && "text-primary font-medium")}
             >
               All
-            </button>
+            </Button>
             {options.colors.map((color) => (
               <button
                 key={color}
@@ -150,8 +152,9 @@ export default function FilterPanel({ filters, options, onChange }: Props) {
         />
         <Button
           type="button"
+          variant="outline"
           onClick={handleReset}
-          className="bg-ink hover:bg-ink/90 text-primary-foreground h-10 cursor-pointer rounded-[7px] px-6 text-xs tracking-[2px] uppercase"
+          className="h-10 rounded-[7px] px-6 text-xs tracking-[2px] uppercase"
         >
           Reset filters
         </Button>

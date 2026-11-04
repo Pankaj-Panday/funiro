@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ButtonLink } from "@/components/ui/button";
 
 export default function HeroSection() {
   return (
@@ -16,12 +16,13 @@ export default function HeroSection() {
             ullamcorper mattis.
           </p>
 
-          <Link
+          <ButtonLink
             href="/shop"
-            className="bg-primary active:bg-primary-active text-primary-foreground inline-block px-[4.2rem] py-[1.3rem]"
+            size="none"
+            className="rounded-none px-[4.2rem] py-[1.3rem] text-base font-normal"
           >
             Buy Now
-          </Link>
+          </ButtonLink>
         </div>
       </div>
     </section>

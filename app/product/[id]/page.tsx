@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import ProductBreadcrumb from "@/components/product/product-breadcrumb";
@@ -7,6 +6,7 @@ import ProductGallery from "@/components/product/product-gallery";
 import ProductInfo from "@/components/product/product-info";
 import ProductTabs from "@/components/product/product-tabs";
 import ProductGrid from "@/components/shared/product-grid";
+import ShowMoreLink from "@/components/shared/show-more-link";
 import { getProductById, getProductIds, getRelatedProducts } from "@/lib/product/get-product";
 
 type Props = {
@@ -54,12 +54,7 @@ export default async function ProductPage({ params }: Props) {
 
           <ProductGrid products={relatedProducts} />
 
-          <Link
-            href="/shop"
-            className="border-primary text-primary active:bg-primary active:text-primary-foreground mx-auto mt-8 block w-[15.3rem] border px-[4.6rem] py-3 text-center font-semibold transition-colors duration-100"
-          >
-            Show More
-          </Link>
+          <ShowMoreLink />
         </section>
       )}
     </>

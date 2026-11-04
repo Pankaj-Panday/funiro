@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ButtonLink } from "@/components/ui/button";
 import { exploreSlides } from "@/constants/homepage/homepage";
 
 import ExploreCarousel from "./explore-carousel";
@@ -18,12 +19,13 @@ export default function ExploreSection() {
             Our designer already made a lot of beautiful prototype of rooms that inspire you.
           </p>
 
-          <Link
+          <ButtonLink
             href="/shop"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground mt-6 inline-flex min-w-44 items-center justify-center px-9 py-3 font-semibold transition-colors"
+            size="none"
+            className="mt-6 min-w-44 rounded-none px-9 py-3 text-base font-semibold"
           >
             Explore More
-          </Link>
+          </ButtonLink>
         </div>
 
         {/* Featured Room */}

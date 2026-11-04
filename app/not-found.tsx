@@ -1,9 +1,7 @@
 import { ArrowRight, Compass, Home } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ButtonLink } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Page Not Found | Funiro",
@@ -36,18 +34,15 @@ export default function NotFound() {
       </p>
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <Link href="/" className={cn(buttonVariants({ size: "lg" }), "h-11 gap-2 px-6")}>
+        <ButtonLink href="/" size="lg" className="h-11 gap-2 px-6">
           <Home className="size-4" />
           Back to Home
-        </Link>
+        </ButtonLink>
 
-        <Link
-          href="/shop"
-          className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-11 gap-2 px-6")}
-        >
+        <ButtonLink href="/shop" variant="outline" size="lg" className="h-11 gap-2 px-6">
           Continue Shopping
           <ArrowRight className="size-4 transition-transform duration-200 group-hover/button:translate-x-1" />
-        </Link>
+        </ButtonLink>
       </div>
     </section>
   );
