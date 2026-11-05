@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { addToCart } from "@/lib/cart/cart-store";
 import { cn } from "@/lib/utils";
+import { toggleWishlist, useWishlistIds } from "@/lib/wishlist/wishlist-store";
 import type { Product } from "@/types/product/product.types";
 
 type Props = {
@@ -26,6 +27,7 @@ export default function ProductPurchase({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
 
   const outOfStock = stock < 1;
+  const wishlisted = useWishlistIds().includes(product.id);
 
   function handleAddToCart() {
     addToCart(product, { color: selectedColor, size: selectedSize, quantity });
@@ -107,8 +109,13 @@ export default function ProductPurchase({ product }: Props) {
           Add To Cart
         </Button>
 
-        <Button variant="outline" className={cn(actionClass, "min-w-42")}>
-          Wishlist
+        {/* Fixed width with no side padding, so the longer label can't shift the row */}
+        <Button
+          variant={wishlisted ? "default" : "outline"}
+          onClick={() => toggleWishlist(product.id)}
+          className={cn(actionClass, "min-w-42 px-0 sm:px-0")}
+        >
+          {wishlisted ? "Wishlisted" : "Wishlist"}
         </Button>
       </div>
     </div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import FormatPrice from "@/components/shared/format-price";
+import WishlistButton from "@/components/wishlist/wishlist-button";
 import { getEffectivePrice } from "@/lib/product-price";
 import type { Product } from "@/types/product/product.types";
 
@@ -55,6 +56,12 @@ export default function ProductList({ products }: Props) {
               />
             </div>
           </div>
+
+          <WishlistButton
+            productId={product.id}
+            name={product.name}
+            className="absolute right-3 bottom-3"
+          />
 
           <div className="absolute top-4 left-4 flex gap-1 sm:top-3 sm:right-3 sm:left-auto">
             {product.discountPercent > 0 && (

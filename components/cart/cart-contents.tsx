@@ -1,8 +1,9 @@
 "use client";
 
 import { Button, ButtonLink } from "@/components/ui/button";
-import { clearCart, useCartItems, useCartReady } from "@/lib/cart/cart-store";
+import { clearCart, useCartItems } from "@/lib/cart/cart-store";
 import { getCartTotals } from "@/lib/cart/cart-totals";
+import { useStoreReady } from "@/lib/list-store";
 import { cn } from "@/lib/utils";
 
 import CartRow, { cartRowColumns } from "./cart-row";
@@ -12,7 +13,7 @@ const titles = ["Product", "Price", "Quantity", "Subtotal"];
 
 export default function CartContents() {
   const items = useCartItems();
-  const ready = useCartReady();
+  const ready = useStoreReady();
 
   // The saved cart only exists in the browser, so stay hidden instead of flashing an empty cart.
   return (
