@@ -4,7 +4,7 @@ import { Heart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { toggleWishlist, useWishlistIds } from "@/lib/wishlist/wishlist-store";
+import { useWishlist } from "@/lib/wishlist/wishlist-store";
 
 type Props = {
   productId: number;
@@ -13,7 +13,8 @@ type Props = {
 };
 
 export default function WishlistButton({ productId, name, className }: Props) {
-  const wishlisted = useWishlistIds().includes(productId);
+  const wishlisted = useWishlist((state) => state.ids.includes(productId));
+  const toggle = useWishlist((state) => state.toggle);
 
   // The solid backing keeps the button readable over any product photo.
   return (
@@ -23,7 +24,7 @@ export default function WishlistButton({ productId, name, className }: Props) {
         size="icon"
         aria-label={`${wishlisted ? "Remove" : "Add"} ${name} ${wishlisted ? "from" : "to"} wishlist`}
         aria-pressed={wishlisted}
-        onClick={() => toggleWishlist(productId)}
+        onClick={() => toggle(productId)}
         className="rounded-full"
       >
         <Heart className={cn("size-4.5", wishlisted && "fill-primary text-primary")} />

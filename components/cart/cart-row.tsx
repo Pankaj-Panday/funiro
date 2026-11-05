@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import FormatPrice from "@/components/shared/format-price";
 import { Button } from "@/components/ui/button";
-import { removeFromCart, updateCartQuantity } from "@/lib/cart/cart-store";
+import { useCart } from "@/lib/cart/cart-store";
 import type { CartItem } from "@/types/cart/cart.types";
 
 export const cartRowColumns = "sm:grid-cols-[repeat(4,1fr)_0.5fr]";
@@ -15,6 +15,8 @@ type Props = {
 
 export default function CartRow({ item }: Props) {
   const { id, productId, name, image, price, color, size, stock, quantity } = item;
+  const updateQuantity = useCart((state) => state.updateQuantity);
+  const removeItem = useCart((state) => state.removeItem);
   const productHref = `/product/${productId}`;
 
   return (
@@ -55,7 +57,7 @@ export default function CartRow({ item }: Props) {
         variant="ghost"
         size="icon"
         aria-label={`Remove ${name} from cart`}
-        onClick={() => removeFromCart(id)}
+        onClick={() => removeItem(id)}
         className="text-primary col-start-2 row-start-1 self-start justify-self-end sm:col-start-5 sm:self-center sm:justify-self-center"
       >
         <Trash2 className="size-5" />
@@ -72,7 +74,7 @@ export default function CartRow({ item }: Props) {
           size="icon-xs"
           aria-label={`Decrease quantity of ${name}`}
           disabled={quantity <= 1}
-          onClick={() => updateCartQuantity(id, quantity - 1)}
+          onClick={() => updateQuantity(id, quantity - 1)}
         >
           <Minus className="size-4" />
         </Button>
@@ -84,7 +86,7 @@ export default function CartRow({ item }: Props) {
           size="icon-xs"
           aria-label={`Increase quantity of ${name}`}
           disabled={quantity >= stock}
-          onClick={() => updateCartQuantity(id, quantity + 1)}
+          onClick={() => updateQuantity(id, quantity + 1)}
         >
           <Plus className="size-4" />
         </Button>

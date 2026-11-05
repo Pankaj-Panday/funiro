@@ -2,13 +2,13 @@
 
 import { ShoppingCart } from "lucide-react";
 
-import { useCartItems } from "@/lib/cart/cart-store";
+import { useCart } from "@/lib/cart/cart-store";
 import { getCartTotals } from "@/lib/cart/cart-totals";
 
 import CountBadge from "./count-badge";
 
 export default function CartIcon() {
-  const { totalItems } = getCartTotals(useCartItems());
+  const { totalItems } = getCartTotals(useCart((state) => state.items));
 
   return (
     <span className="relative block">

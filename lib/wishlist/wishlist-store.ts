@@ -1,11 +1,27 @@
-import { createListStore } from "@/lib/list-store";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-const store = createListStore<number>("funiro-wishlist");
+import { syncAcrossTabs } from "@/lib/sync-across-tabs";
 
-export const useWishlistIds = store.useItems;
+type WishlistState = {
+  ids: number[];
+  toggle: (productId: number) => void;
+};
 
-export function toggleWishlist(productId: number) {
-  const ids = store.get();
+export const useWishlist = create<WishlistState>()(
+  persist(
+    (set) => ({
+      ids: [],
 
-  store.set(ids.includes(productId) ? ids.filter((id) => id !== productId) : [...ids, productId]);
-}
+      toggle: (productId) =>
+        set((state) => ({
+          ids: state.ids.includes(productId)
+            ? state.ids.filter((id) => id !== productId)
+            : [...state.ids, productId],
+        })),
+    }),
+    { name: "funiro-wishlist" },
+  ),
+);
+
+syncAcrossTabs(useWishlist);

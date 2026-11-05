@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { addToCart } from "@/lib/cart/cart-store";
+import { useCart } from "@/lib/cart/cart-store";
 import { cn } from "@/lib/utils";
-import { toggleWishlist, useWishlistIds } from "@/lib/wishlist/wishlist-store";
+import { useWishlist } from "@/lib/wishlist/wishlist-store";
 import type { Product } from "@/types/product/product.types";
 
 type Props = {
@@ -27,10 +27,12 @@ export default function ProductPurchase({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
 
   const outOfStock = stock < 1;
-  const wishlisted = useWishlistIds().includes(product.id);
+  const addItem = useCart((state) => state.addItem);
+  const wishlisted = useWishlist((state) => state.ids.includes(product.id));
+  const toggleWishlist = useWishlist((state) => state.toggle);
 
   function handleAddToCart() {
-    addToCart(product, { color: selectedColor, size: selectedSize, quantity });
+    addItem(product, { color: selectedColor, size: selectedSize, quantity });
     router.push("/cart");
   }
 

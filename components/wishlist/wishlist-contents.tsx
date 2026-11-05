@@ -2,9 +2,9 @@
 
 import ProductGrid from "@/components/shared/product-grid";
 import { ButtonLink } from "@/components/ui/button";
-import { useStoreReady } from "@/lib/list-store";
+import { useHydrated } from "@/hooks/use-hydrated";
 import { cn } from "@/lib/utils";
-import { useWishlistIds } from "@/lib/wishlist/wishlist-store";
+import { useWishlist } from "@/lib/wishlist/wishlist-store";
 import type { Product } from "@/types/product/product.types";
 
 type Props = {
@@ -12,14 +12,14 @@ type Props = {
 };
 
 export default function WishlistContents({ products }: Props) {
-  const ids = useWishlistIds();
-  const ready = useStoreReady();
+  const ids = useWishlist((state) => state.ids);
+  const hydrated = useHydrated();
 
   const wishlist = ids.flatMap((id) => products.find((product) => product.id === id) ?? []);
 
   // The saved list only exists in the browser, so stay hidden instead of flashing an empty state.
   return (
-    <section className={cn("content-container mt-20 min-h-60", !ready && "invisible")}>
+    <section className={cn("content-container mt-20 min-h-60", !hydrated && "invisible")}>
       {wishlist.length > 0 ? (
         <ProductGrid products={wishlist} />
       ) : (

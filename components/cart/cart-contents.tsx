@@ -1,9 +1,9 @@
 "use client";
 
 import { Button, ButtonLink } from "@/components/ui/button";
-import { clearCart, useCartItems } from "@/lib/cart/cart-store";
+import { useHydrated } from "@/hooks/use-hydrated";
+import { useCart } from "@/lib/cart/cart-store";
 import { getCartTotals } from "@/lib/cart/cart-totals";
-import { useStoreReady } from "@/lib/list-store";
 import { cn } from "@/lib/utils";
 
 import CartRow, { cartRowColumns } from "./cart-row";
@@ -12,15 +12,16 @@ import CartSummary from "./cart-summary";
 const titles = ["Product", "Price", "Quantity", "Subtotal"];
 
 export default function CartContents() {
-  const items = useCartItems();
-  const ready = useStoreReady();
+  const items = useCart((state) => state.items);
+  const clear = useCart((state) => state.clear);
+  const hydrated = useHydrated();
 
   // The saved cart only exists in the browser, so stay hidden instead of flashing an empty cart.
   return (
     <section
       className={cn(
         "content-container mt-18 flex min-h-90 flex-col gap-20 xl:grid xl:grid-cols-[2.5fr_1fr] xl:gap-7.5",
-        !ready && "invisible",
+        !hydrated && "invisible",
       )}
     >
       <div>
@@ -54,7 +55,7 @@ export default function CartContents() {
 
             <Button
               size="none"
-              onClick={clearCart}
+              onClick={clear}
               className="mt-8 px-8 py-2.75 text-xs tracking-[1px]"
             >
               Clear All
