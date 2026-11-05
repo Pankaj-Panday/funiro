@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, User } from "lucide-react";
+import { User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -12,6 +12,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Logo from "../shared/logo";
 import CartIcon from "./cart-icon";
 import { HamburgerIcon } from "./hamburger-icon";
+import WishlistIcon from "./wishlist-icon";
 
 export default function Header() {
   const pathname = usePathname();
@@ -57,7 +58,7 @@ export default function Header() {
 
                 <li>
                   <Link href="/wishlist">
-                    <Heart className="h-5 w-5" />
+                    <WishlistIcon />
                   </Link>
                 </li>
 
@@ -105,7 +106,7 @@ export default function Header() {
 
               <li>
                 <SheetClose nativeButton={false} render={<Link href="/wishlist" />}>
-                  <Heart className="h-5 w-5" />
+                  <WishlistIcon />
                 </SheetClose>
               </li>
 

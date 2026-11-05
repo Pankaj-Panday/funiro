@@ -1,124 +1,74 @@
-import { useSyncExternalStore } from "react";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 import { getEffectivePrice } from "@/lib/product-price";
+import { syncAcrossTabs } from "@/lib/sync-across-tabs";
 import type { CartItem } from "@/types/cart/cart.types";
 import type { Product } from "@/types/product/product.types";
 
-const STORAGE_KEY = "funiro-cart";
-const EMPTY_CART: CartItem[] = [];
-
-const listeners = new Set<() => void>();
-let items: CartItem[] | null = null;
-
-function readStorage() {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
-    return Array.isArray(parsed) ? (parsed as CartItem[]) : EMPTY_CART;
-  } catch {
-    return EMPTY_CART;
-  }
-}
-
-function getItems() {
-  items ??= readStorage();
-  return items;
-}
-
-function setItems(nextItems: CartItem[]) {
-  items = nextItems;
-
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextItems));
-  } catch {
-    // Storage can be full or blocked; the cart still works until the page reloads.
-  }
-
-  listeners.forEach((listener) => listener());
-}
-
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  return () => {
-    listeners.delete(listener);
-  };
-}
-
-// Keeps other open tabs from overwriting the cart with an old copy.
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (event) => {
-    // The key is null when another tab calls localStorage.clear().
-    if (event.key !== STORAGE_KEY && event.key !== null) return;
-
-    items = readStorage();
-    listeners.forEach((listener) => listener());
-  });
-}
-
-export function useCartItems() {
-  return useSyncExternalStore(subscribe, getItems, () => EMPTY_CART);
-}
-
-export function useCartReady() {
-  return useSyncExternalStore(
-    subscribe,
-    () => true,
-    () => false,
-  );
-}
+type CartState = {
+  items: CartItem[];
+  addItem: (product: Product, options: Pick<CartItem, "color" | "size" | "quantity">) => void;
+  updateQuantity: (id: string, quantity: number) => void;
+  removeItem: (id: string) => void;
+  clear: () => void;
+};
 
 const clampQuantity = (quantity: number, stock: number) => Math.min(Math.max(quantity, 1), stock);
 
-export function addToCart(
-  product: Product,
-  { color, size, quantity }: Pick<CartItem, "color" | "size" | "quantity">,
-) {
-  const id = `${product.id}-${color}-${size}`;
-  const current = getItems();
+export const useCart = create<CartState>()(
+  persist(
+    (set) => ({
+      items: [],
 
-  if (current.some((item) => item.id === id)) {
-    setItems(
-      current.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              price: getEffectivePrice(product),
-              stock: product.stock,
-              quantity: clampQuantity(item.quantity + quantity, product.stock),
-            }
-          : item,
-      ),
-    );
-    return;
-  }
+      addItem: (product, { color, size, quantity }) =>
+        set((state) => {
+          const id = `${product.id}-${color}-${size}`;
+          const price = getEffectivePrice(product);
 
-  setItems([
-    ...current,
-    {
-      id,
-      productId: product.id,
-      name: product.name,
-      image: product.thumbnail,
-      price: getEffectivePrice(product),
-      color,
-      size,
-      stock: product.stock,
-      quantity: clampQuantity(quantity, product.stock),
-    },
-  ]);
-}
+          if (state.items.some((item) => item.id === id)) {
+            return {
+              items: state.items.map((item) =>
+                item.id === id
+                  ? {
+                      ...item,
+                      price,
+                      stock: product.stock,
+                      quantity: clampQuantity(item.quantity + quantity, product.stock),
+                    }
+                  : item,
+              ),
+            };
+          }
 
-export function updateCartQuantity(id: string, quantity: number) {
-  setItems(
-    getItems().map((item) =>
-      item.id === id ? { ...item, quantity: clampQuantity(quantity, item.stock) } : item,
-    ),
-  );
-}
+          const newItem = {
+            id,
+            productId: product.id,
+            name: product.name,
+            image: product.thumbnail,
+            price,
+            color,
+            size,
+            stock: product.stock,
+            quantity: clampQuantity(quantity, product.stock),
+          };
 
-export function removeFromCart(id: string) {
-  setItems(getItems().filter((item) => item.id !== id));
-}
+          return { items: [...state.items, newItem] };
+        }),
 
-export function clearCart() {
-  setItems([]);
-}
+      updateQuantity: (id, quantity) =>
+        set((state) => ({
+          items: state.items.map((item) =>
+            item.id === id ? { ...item, quantity: clampQuantity(quantity, item.stock) } : item,
+          ),
+        })),
+
+      removeItem: (id) => set((state) => ({ items: state.items.filter((item) => item.id !== id) })),
+
+      clear: () => set({ items: [] }),
+    }),
+    { name: "funiro-cart" },
+  ),
+);
+
+syncAcrossTabs(useCart);

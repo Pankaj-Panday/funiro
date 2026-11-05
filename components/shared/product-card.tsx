@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import FormatPrice from "@/components/shared/format-price";
+import WishlistButton from "@/components/wishlist/wishlist-button";
 import { getEffectivePrice } from "@/lib/product-price";
 import type { Product } from "@/types/product/product.types";
 
@@ -24,6 +25,8 @@ export default function ProductCard({ product }: Props) {
           className="object-cover"
           sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         />
+
+        <WishlistButton productId={id} name={name} className="absolute top-2 left-2" />
 
         {discountPercent > 0 && (
           <span className="bg-badge-sale text-primary-foreground absolute top-2 right-2 grid size-12 place-items-center rounded-full text-sm font-medium">
